@@ -1,4 +1,4 @@
-import { Model } from 'sequelize'
+import { DOUBLE, Model } from 'sequelize'
 import moment from 'moment'
 
 const loadModel = (sequelize, DataTypes) => {
@@ -28,6 +28,60 @@ const loadModel = (sequelize, DataTypes) => {
   }
   Restaurant.init({
     // TODO: Include the rest of the properties of the Restaurant model
+
+    name: {
+      type: DataTypes.STRING
+        },
+    description: {
+      type: DataTypes.STRING
+        },
+    address: {
+      type: DataTypes.STRING
+        },
+    postalCode: {
+      type: DataTypes.STRING
+        },
+    url: {
+      type: DataTypes.STRING
+        },
+    shippingCosts: {
+      type: DataTypes.DOUBLE
+    },
+    averageServiceMinutes: {
+      type: DataTypes.DOUBLE
+        },
+    email: {
+      type: DataTypes.STRING
+        },
+    phone: {
+      type: DataTypes.STRING
+        },
+    logo: {
+      type: DataTypes.STRING
+        },
+    heroimage: {
+      type: DataTypes.STRING
+        },
+    status: {
+      type: DataTypes.ENUM,
+      values: [
+        'online',
+        'offline',
+        'closed',
+        'temporarly closed'
+      ],
+      defaultValue:'temporarly closed'
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    }
 
   }, {
     sequelize,
