@@ -8,6 +8,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       // TODO: Include the rest of the fields of the Restaurants table
+
+      id: {
+        type: Sequelize.STRING
+      },
       name: {
         type: Sequelize.STRING
       },

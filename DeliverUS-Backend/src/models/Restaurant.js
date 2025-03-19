@@ -1,4 +1,4 @@
-import { DOUBLE, Model } from 'sequelize'
+import { Model } from 'sequelize'
 import moment from 'moment'
 
 const loadModel = (sequelize, DataTypes) => {
@@ -29,39 +29,18 @@ const loadModel = (sequelize, DataTypes) => {
   Restaurant.init({
     // TODO: Include the rest of the properties of the Restaurant model
 
-    name: {
-      type: DataTypes.STRING
-        },
-    description: {
-      type: DataTypes.STRING
-        },
-    address: {
-      type: DataTypes.STRING
-        },
-    postalCode: {
-      type: DataTypes.STRING
-        },
-    url: {
-      type: DataTypes.STRING
-        },
-    shippingCosts: {
-      type: DataTypes.DOUBLE
-    },
-    averageServiceMinutes: {
-      type: DataTypes.DOUBLE
-        },
-    email: {
-      type: DataTypes.STRING
-        },
-    phone: {
-      type: DataTypes.STRING
-        },
-    logo: {
-      type: DataTypes.STRING
-        },
-    heroimage: {
-      type: DataTypes.STRING
-        },
+    id: DataTypes.STRING,
+    name: DataTypes.STRING,
+    description: DataTypes.STRING,
+    address: DataTypes.STRING,
+    postalCode:DataTypes.STRING,
+    url: DataTypes.STRING,
+    shippingCosts: DataTypes.DOUBLE,
+    averageServiceMinutes:  DataTypes.DOUBLE,
+    email: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    logo: DataTypes.STRING,
+    heroimage: DataTypes.STRING,
     status: {
       type: DataTypes.ENUM,
       values: [
@@ -71,6 +50,25 @@ const loadModel = (sequelize, DataTypes) => {
         'temporarly closed'
       ],
       defaultValue:'temporarly closed'
+    },
+    restaurantCategoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: {
+          tableName: 'RestaurantCategories'
+        },
+        key: 'id'
+      },
+    },
+    userId: {
+      allowNull: false,
+      type: Sequelize.INTEGER,
+      references: {
+        model: {
+          tableName: 'Users'
+        },
+        key: 'id'
+      },
     },
     createdAt: {
       allowNull: false,
